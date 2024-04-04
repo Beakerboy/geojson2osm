@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 from typing import TypeVar
 
 
-T = Typevar("T", bound="Node")
+T = TypeVar("T", bound="Node")
 
 
 class Node:
@@ -13,7 +13,7 @@ class Node:
         self.tags = properties
 
 
-T = Typevar("T", bound="Way")
+T = TypeVar("T", bound="Way")
 
 
 class Way:
@@ -22,7 +22,7 @@ class Way:
         self.nodes = []
 
 
-T = Typevar("T", bound="Relation")
+T = TypeVar("T", bound="Relation")
 
 
 class Relation:
