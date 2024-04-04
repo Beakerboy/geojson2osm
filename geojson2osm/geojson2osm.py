@@ -3,25 +3,25 @@ import xml.etree.ElementTree as ET
 
 
 class Node:
-    def __init__(self, coordinates, properties):
+    def __init__(self, coordinates, properties) -> None:
         self.lat = coordinates[1]
         self.lon = coordinates[0]
         self.tags = properties
 
 
 class Way:
-    def __init__(self, properties):
+    def __init__(self, properties) -> None:
         self.tags = properties
         self.nodes = []
 
 
 class Relation:
-    def __init__(self, properties):
+    def __init__(self, properties) -> None:
         self.tags = properties
         self.members = []
 
 
-def geojson2osm(geojson):
+def geojson2osm(geojson) -> string:
     if isinstance(geojson, str):
         geojson = json.loads(geojson)
 
