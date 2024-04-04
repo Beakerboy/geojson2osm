@@ -19,7 +19,7 @@ T2 = TypeVar("T2", bound="Way")
 class Way:
     def __init__(self: T2, properties: list) -> None:
         self.tags = properties
-        self.nodes = []
+        self.nodes: list = []
 
 
 T3 = TypeVar("T3", bound="Relation")
@@ -28,7 +28,7 @@ T3 = TypeVar("T3", bound="Relation")
 class Relation:
     def __init__(self: T3, properties: list) -> None:
         self.tags = properties
-        self.members = []
+        self.members: list = []
 
 
 def geojson2osm(geojson: str) -> str:
