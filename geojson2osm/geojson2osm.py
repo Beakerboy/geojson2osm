@@ -1,22 +1,32 @@
 import json
 import xml.etree.ElementTree as ET
+from typing import TypeVar
+
+
+T = Typevar("T", bound="Node")
 
 
 class Node:
-    def __init__(self, coordinates: list, properties: list) -> None:
+    def __init__(self: T , coordinates: list, properties: list) -> None:
         self.lat = coordinates[1]
         self.lon = coordinates[0]
         self.tags = properties
 
 
+T = Typevar("T", bound="Way")
+
+
 class Way:
-    def __init__(self, properties: list) -> None:
+    def __init__(self: T, properties: list) -> None:
         self.tags = properties
         self.nodes = []
 
 
+T = Typevar("T", bound="Way")
+
+
 class Relation:
-    def __init__(self, properties: list) -> None:
+    def __init__(self: T, properties: list) -> None:
         self.tags = properties
         self.members = []
 
@@ -150,7 +160,8 @@ def process_line_string(coordinates: list, properties: list, ways: list,
 
 
 def process_multi_polygon(coordinates: list, properties: list,
-        relations: list, ways: list, nodes: list, nodes_index: list) -> None:
+                          relations: list, ways: list,
+                          nodes: list, nodes_index: list) -> None:
 
     if len(coordinates) == 1 and len(coordinates[0]) == 1:
         return process_line_string(
