@@ -1,5 +1,5 @@
 import json
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ETree
 from typing import TypeVar
 
 
@@ -70,11 +70,11 @@ def geojson2osm(geojson: str) -> str:
         else:
             print(f"Unknown or unsupported geometry type: {geometry['type']}")
 
-    osm = ET.Element("osm", {"version": "0.6", "generator": "geojson2osm"})
+    osm = ETree.Element("osm", {"version": "0.6", "generator": "geojson2osm"})
 
     last_node_id = -1
     for node in nodes:
-        node_el = ET.SubElement(
+        node_el = ETree.SubElement(
             osm,
             "node",
             {
@@ -85,20 +85,20 @@ def geojson2osm(geojson: str) -> str:
         )
 
         for k, v in node.tags.items():
-            ET.SubElement(node_el, "tag", {"k": k, "v": v})
+            ETree.SubElement(node_el, "tag", {"k": k, "v": v})
 
         node.id = last_node_id
         last_node_id -= 1
 
     last_way_id = -1
     for way in ways:
-        way_el = ET.SubElement(osm, "way", {"id": str(last_way_id)})
+        way_el = ETree.SubElement(osm, "way", {"id": str(last_way_id)})
 
         for nd in way.nodes:
-            ET.SubElement(way_el, "nd", {"ref": str(nd.id)})
+            ETree.SubElement(way_el, "nd", {"ref": str(nd.id)})
 
         for k, v in way.tags.items():
-            ET.SubElement(way_el, "tag", {"k": k, "v": v})
+            ETree.SubElement(way_el, "tag", {"k": k, "v": v})
 
         way.id = last_way_id
         last_way_id -= 1
@@ -106,10 +106,10 @@ def geojson2osm(geojson: str) -> str:
     last_relation_id = -1
     for relation in relations:
         id_dict = {"id": str(last_relation_id)}
-        relation_el = ET.SubElement(osm, "relation", id_dict)
+        relation_el = ETree.SubElement(osm, "relation", id_dict)
 
         for member in relation.members:
-            ET.SubElement(
+            ETree.SubElement(
                 relation_el,
                 "member",
                 {
@@ -120,12 +120,12 @@ def geojson2osm(geojson: str) -> str:
             )
 
         for k, v in relation.tags.items():
-            ET.SubElement(relation_el, "tag", {"k": k, "v": v})
+            ETree.SubElement(relation_el, "tag", {"k": k, "v": v})
 
         relation.id = last_relation_id
         last_relation_id -= 1
 
-    return ET.tostring(osm, encoding="utf-8", method="xml").decode("utf-8")
+    return ETree.tostring(osm, encoding="utf-8", method="xml").decode("utf-8")
 
 
 def process_point(coordinates: list, properties: list,
