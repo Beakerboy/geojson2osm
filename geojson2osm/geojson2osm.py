@@ -22,7 +22,7 @@ class Way:
         self.nodes = []
 
 
-T = Typevar("T", bound="Way")
+T = Typevar("T", bound="Relation")
 
 
 class Relation:
