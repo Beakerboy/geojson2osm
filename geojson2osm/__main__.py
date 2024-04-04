@@ -15,7 +15,7 @@ def main() -> None:
     output = sys.argv[2]
     with open(output, 'w') as output_file:
         output_file.write(osm_xml)
-    
+
 
 if __name__ == '__main__':
     main()
