@@ -140,8 +140,8 @@ def process_line_string(coordinates: list, properties: list, ways: list, nodes: 
         way.nodes.append(way.nodes[0])
 
 
-def process_multi_polygon(coordinates, properties,
-        relations, ways, nodes, nodes_index) -> None:
+def process_multi_polygon(coordinates: list, properties: list,
+        relations: list, ways: list, nodes: list, nodes_index: list) -> None:
 
     if len(coordinates) == 1 and len(coordinates[0]) == 1:
         return process_line_string(
