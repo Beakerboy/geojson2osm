@@ -37,7 +37,8 @@ def geojson2osm(geojson: str) -> str:
         geometry = feature.get("geometry", feature)
 
         if geometry["type"] == "Point":
-            process_point(geometry["coordinates"], properties, nodes, nodes_index)
+            process_point(geometry["coordinates"],
+                          properties, nodes, nodes_index)
         elif geometry["type"] == "LineString":
             process_line_string(
                 geometry["coordinates"], properties, ways, nodes, nodes_index
@@ -53,7 +54,8 @@ def geojson2osm(geojson: str) -> str:
             )
         elif geometry["type"] == "MultiPolygon":
             process_multi_polygon(
-                geometry["coordinates"], properties, relations, ways, nodes, nodes_index
+                geometry["coordinates"], properties,
+                relations, ways, nodes, nodes_index
             )
         else:
             print(f"Unknown or unsupported geometry type: {geometry['type']}")
@@ -65,7 +67,11 @@ def geojson2osm(geojson: str) -> str:
         node_el = ET.SubElement(
             osm,
             "node",
-            {"id": str(last_node_id), "lat": str(node.lat), "lon": str(node.lon)},
+            {
+                "id": str(last_node_id),
+                "lat": str(node.lat),
+                "lon": str(node.lon)
+            },
         )
 
         for k, v in node.tags.items():
@@ -89,7 +95,8 @@ def geojson2osm(geojson: str) -> str:
 
     last_relation_id = -1
     for relation in relations:
-        relation_el = ET.SubElement(osm, "relation", {"id": str(last_relation_id)})
+        id_dict = {"id": str(last_relation_id)}
+        relation_el = ET.SubElement(osm, "relation", id_dict)
 
         for member in relation.members:
             ET.SubElement(
