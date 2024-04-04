@@ -7,7 +7,7 @@ T = TypeVar("T", bound="Node")
 
 
 class Node:
-    def __init__(self: T , coordinates: list, properties: list) -> None:
+    def __init__(self: T, coordinates: list, properties: list) -> None:
         self.lat = coordinates[1]
         self.lon = coordinates[0]
         self.tags = properties
