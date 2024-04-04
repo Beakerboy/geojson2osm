@@ -1,6 +1,7 @@
 import re
 from geojson2osm import geojson2osm
 
+
 def test_basic_conversion() -> None:
     geojson_data = {
         "type": "FeatureCollection",
