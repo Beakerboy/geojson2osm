@@ -21,7 +21,7 @@ class Relation:
         self.members = []
 
 
-def geojson2osm(geojson) -> string:
+def geojson2osm(geojson) -> str:
     if isinstance(geojson, str):
         geojson = json.loads(geojson)
 
