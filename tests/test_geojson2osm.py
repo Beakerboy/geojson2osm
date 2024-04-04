@@ -1,7 +1,7 @@
 import re
 from geojson2osm import geojson2osm
 
-def test_basic_conversion():
+def test_basic_conversion() -> None:
     geojson_data = {
         "type": "FeatureCollection",
         "features": [
@@ -38,4 +38,3 @@ def test_basic_conversion():
     nd_pattern = re.compile(r'<nd ref="(-\d+)" />')
     nd_matches = nd_pattern.findall(way_content)
     assert nd_matches[0] == nd_matches[-1]
-
