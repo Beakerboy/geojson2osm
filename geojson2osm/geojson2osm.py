@@ -140,7 +140,9 @@ def process_line_string(coordinates, properties, ways, nodes, nodes_index) -> No
         way.nodes.append(way.nodes[0])
 
 
-def process_multi_polygon(coordinates, properties, relations, ways, nodes, nodes_index) -> None:
+def process_multi_polygon(coordinates, properties,
+        relations, ways, nodes, nodes_index) -> None:
+
     if len(coordinates) == 1 and len(coordinates[0]) == 1:
         return process_line_string(
             coordinates[0][0], properties, ways, nodes, nodes_index
@@ -155,7 +157,11 @@ def process_multi_polygon(coordinates, properties, relations, ways, nodes, nodes
             way = Way({})
             ways.append(way)
             relation.members.append(
-                {"elem": way, "type": "way", "role": "outer" if index == 0 else "inner"}
+                {
+                    "elem": way,
+                    "type": "way",
+                    "role": "outer" if index == 0 else "inner"
+                }
             )
 
             for point in ring:
