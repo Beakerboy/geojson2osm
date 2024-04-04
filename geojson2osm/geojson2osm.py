@@ -111,7 +111,8 @@ def geojson2osm(geojson: str) -> str:
     return ET.tostring(osm, encoding="utf-8", method="xml").decode("utf-8")
 
 
-def process_point(coordinates: list, properties: list, nodes: list, nodes_index: list) -> None:
+def process_point(coordinates: list, properties: list,
+                  nodes: list, nodes_index: list) -> None:
     node_hash = json.dumps(coordinates)
     if node_hash not in nodes_index:
         node = Node(coordinates, properties)
@@ -123,7 +124,8 @@ def process_point(coordinates: list, properties: list, nodes: list, nodes_index:
             node.tags[k] = v
 
 
-def process_line_string(coordinates: list, properties: list, ways: list, nodes: list, nodes_index: list) -> None:
+def process_line_string(coordinates: list, properties: list, ways: list,
+                        nodes: list, nodes_index: list) -> None:
     way = Way(properties)
     ways.append(way)
 
