@@ -125,7 +125,7 @@ def geojson2osm(geojson: dict) -> str:
     return ETree.tostring(osm, encoding="utf-8", method="xml").decode("utf-8")
 
 
-def process_point(coordinates: list, properties: list,
+def process_point(coordinates: list, properties: dict,
                   nodes: list, nodes_index: dict) -> None:
     node_hash = json.dumps(coordinates)
     if node_hash not in nodes_index:
@@ -138,7 +138,7 @@ def process_point(coordinates: list, properties: list,
             node.tags[k] = v
 
 
-def process_line_string(coordinates: list, properties: list, ways: list,
+def process_line_string(coordinates: list, properties: dict, ways: list,
                         nodes: list, nodes_index: dict) -> None:
     way = Way(properties)
     ways.append(way)
@@ -156,7 +156,7 @@ def process_line_string(coordinates: list, properties: list, ways: list,
         way.nodes.append(way.nodes[0])
 
 
-def process_multi_polygon(coordinates: list, properties: list,
+def process_multi_polygon(coordinates: list, properties: dict,
                           relations: list, ways: list,
                           nodes: list, nodes_index: dict) -> None:
 
