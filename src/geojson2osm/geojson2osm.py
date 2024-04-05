@@ -126,7 +126,7 @@ def geojson2osm(geojson: dict) -> str:
 
 
 def process_point(coordinates: list, properties: list,
-                  nodes: list, nodes_index: list) -> None:
+                  nodes: list, nodes_index: dict) -> None:
     node_hash = json.dumps(coordinates)
     if node_hash not in nodes_index:
         node = Node(coordinates, properties)
