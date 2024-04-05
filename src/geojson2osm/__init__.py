@@ -1,1 +1,1 @@
-from .geojson2osm import geojson2osm
+from .geojson2osm import geojson2osm  # noqa
