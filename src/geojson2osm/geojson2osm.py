@@ -139,7 +139,7 @@ def process_point(coordinates: list, properties: list,
 
 
 def process_line_string(coordinates: list, properties: list, ways: list,
-                        nodes: list, nodes_index: list) -> None:
+                        nodes: list, nodes_index: dict) -> None:
     way = Way(properties)
     ways.append(way)
 
