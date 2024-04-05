@@ -1,5 +1,5 @@
 import re
-from geojson2osm import geojson2osm
+from geojson2osm import geojson2osm as g2o
 
 
 def test_basic_conversion() -> None:
@@ -25,7 +25,7 @@ def test_basic_conversion() -> None:
         ],
     }
 
-    osm_xml = geojson2osm(geojson_data)
+    osm_xml = g2o(geojson_data)
     assert '<osm version="0.6" generator="geojson2osm">' in osm_xml
     assert '<tag k="building" v="yes" />' in osm_xml
 
