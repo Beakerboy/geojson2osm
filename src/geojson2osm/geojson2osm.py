@@ -34,10 +34,10 @@ class Relation:
 def geojson2osm(geojson: dict) -> str:
     features = geojson.get("features", [geojson])
 
-    nodes = []
-    nodes_index = {}
-    ways = []
-    relations = []
+    nodes: list = []
+    nodes_index: dict = {}
+    ways: list = []
+    relations: list = []
 
     for feature in features:
         properties = feature.get("properties", {})
