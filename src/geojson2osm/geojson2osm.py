@@ -7,7 +7,7 @@ T1 = TypeVar("T1", bound="Node")
 
 
 class Node:
-    def __init__(self: T1, coordinates: list, properties: list) -> None:
+    def __init__(self: T1, coordinates: list, properties: dict) -> None:
         self.lat = coordinates[1]
         self.lon = coordinates[0]
         self.tags = properties
@@ -17,7 +17,7 @@ T2 = TypeVar("T2", bound="Way")
 
 
 class Way:
-    def __init__(self: T2, properties: list) -> None:
+    def __init__(self: T2, properties: dict) -> None:
         self.tags = properties
         self.nodes: list = []
 
@@ -26,7 +26,7 @@ T3 = TypeVar("T3", bound="Relation")
 
 
 class Relation:
-    def __init__(self: T3, properties: list) -> None:
+    def __init__(self: T3, properties: dict) -> None:
         self.tags = properties
         self.members: list = []
 
