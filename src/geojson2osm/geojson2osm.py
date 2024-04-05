@@ -31,10 +31,7 @@ class Relation:
         self.members: list = []
 
 
-def geojson2osm(geojson: str) -> str:
-    if isinstance(geojson, str):
-        geojson = json.loads(geojson)
-
+def geojson2osm(geojson: dict) -> str:
     features = geojson.get("features", [geojson])
 
     nodes = []
