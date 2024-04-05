@@ -1,1 +1,1 @@
-# blank
+from .geojson2osm import geojson2osm
