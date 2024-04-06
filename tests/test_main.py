@@ -14,4 +14,6 @@ def test_main(mocker: MockerFixture) -> None:
     main()
     f = open("output.xml", "r")
     file = f.read()
-    assert file == '<osm version="0.6" generator="geojson2osm">'
+    f1 = open("tests/files/output.xml", "r")
+    expected = f1.read()
+    assert file == expected
