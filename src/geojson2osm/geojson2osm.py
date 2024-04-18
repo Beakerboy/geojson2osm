@@ -152,7 +152,8 @@ def process_line_string(coordinates: list, properties: dict, ways: list,
             node = Node(point, {})
             nodes.append(node)
             nodes_index[node_hash] = node
-            way.nodes.append(node)
+
+        way.nodes.append(nodes_index[node_hash])
 
     # Close the way if it's not already closed
     if coordinates[0] == coordinates[-1]:
@@ -191,7 +192,8 @@ def process_multi_polygon(coordinates: list, properties: dict,
                     node = Node(point, {})
                     nodes.append(node)
                     nodes_index[node_hash] = node
-                    way.nodes.append(node)
+
+                way.nodes.append(nodes_index[node_hash])
 
             if ring[0] == ring[-1]:
                 if len(way.nodes) > 0:
