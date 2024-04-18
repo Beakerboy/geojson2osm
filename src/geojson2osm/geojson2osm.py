@@ -155,10 +155,6 @@ def process_line_string(coordinates: list, properties: dict, ways: list,
 
         way.nodes.append(nodes_index[node_hash])
 
-    # Close the way if it's not already closed
-    if coordinates[0] == coordinates[-1]:
-        way.nodes.append(way.nodes[0])
-
 
 def process_multi_polygon(coordinates: list, properties: dict,
                           relations: list, ways: list,
@@ -195,9 +191,7 @@ def process_multi_polygon(coordinates: list, properties: dict,
 
                 way.nodes.append(nodes_index[node_hash])
 
-            if ring[0] == ring[-1]:
-                if len(way.nodes) > 0:
-                    way.nodes.append(way.nodes[0])
-                else:
-                    raise Exception("Failure with ring index " + str(index)
-                                    + " of polygon number " + str(i))
+            # Check if the original ring is "closed". If not
+            # append the first node to the end.
+            if ring[0] != ring[-1]:
+                way.nodes.append(way.nodes[0])
