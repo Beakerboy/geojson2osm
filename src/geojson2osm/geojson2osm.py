@@ -171,8 +171,9 @@ def process_multi_polygon(coordinates: list, properties: dict,
     relation = Relation(properties)
     relation.tags["type"] = "multipolygon"
     relations.append(relation)
-
+    i = -1
     for polygon in coordinates:
+        i += 1
         for index, ring in enumerate(polygon):
             way = Way({})
             ways.append(way)
@@ -196,4 +197,4 @@ def process_multi_polygon(coordinates: list, properties: dict,
                 if len(way.nodes) > 0:
                     way.nodes.append(way.nodes[0])
                 else:
-                    raise Exception("Failure with ring index: " + str(index))
+                    raise Exception("Failure with ring index " + str(index) + " of polygon number " + str(i))
