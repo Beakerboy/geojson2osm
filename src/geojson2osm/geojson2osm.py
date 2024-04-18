@@ -193,7 +193,7 @@ def process_multi_polygon(coordinates: list, properties: dict,
                     way.nodes.append(node)
 
             if ring[0] == ring[-1]:
-                if 0 in way.nodes:
+                if len(way.nodes) > 0:
                     way.nodes.append(way.nodes[0])
                 else:
                     raise Exception("Failure with ring index: " + str(index))
