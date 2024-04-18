@@ -24,7 +24,7 @@ def test_multipolygon(mocker: MockerFixture) -> None:
         "sys.argv",
         [
             "geojson2osm",
-            "tests/files/Multipolygon.geojson",
+            "tests/files/Bug_multi.geojson",
             "output1.xml"
         ],
     )
