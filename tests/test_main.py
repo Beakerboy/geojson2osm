@@ -12,7 +12,8 @@ def run_around_tests() -> Generator:
     yield
     # Code that will run after your test:
     p = Path("output.xml")
-    p.unlink()
+    if p.exists():
+        p.unlink()
 
 
 def test_main(mocker: MockerFixture) -> None:
