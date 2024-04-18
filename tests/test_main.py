@@ -18,6 +18,7 @@ def test_main(mocker: MockerFixture) -> None:
     expected = f1.read()
     assert file == expected
 
+
 def test_multipolygon(mocker: MockerFixture) -> None:
     mocker.patch(
         "sys.argv",
