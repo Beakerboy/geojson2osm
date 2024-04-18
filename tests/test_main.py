@@ -1,5 +1,6 @@
 import pytest
 from pytest_mock import MockerFixture
+from typing import Generator
 from geojson2osm.__main__ import main
 
 
