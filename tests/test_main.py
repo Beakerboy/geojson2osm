@@ -17,3 +17,14 @@ def test_main(mocker: MockerFixture) -> None:
     f1 = open("tests/files/output.xml", "r")
     expected = f1.read()
     assert file == expected
+
+def test_multipolygon(mocker: MockerFixture) -> None:
+    mocker.patch(
+        "sys.argv",
+        [
+            "geojson2osm",
+            "tests/files/Multipolygon.geojson",
+            "output1.xml"
+        ],
+    )
+    main()
