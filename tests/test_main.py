@@ -6,7 +6,7 @@ from geojson2osm.__main__ import main
 
 
 test_files = [
-    "input",
+    "polygon",
     "repeated_point"
 ]
 
