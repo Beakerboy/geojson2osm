@@ -6,8 +6,8 @@ from geojson2osm.__main__ import main
 
 
 test_files = [
-    ["input"],
-    ["repeated_point"]
+    "input",
+    "repeated_point"
 ]
 
 
